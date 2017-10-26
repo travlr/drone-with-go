@@ -14,11 +14,11 @@ pipeline:
     image: drillster/drone-email
     host: smtp.gmail.com
     port: 465
-    username: foo
-    password: ${GMAIL_PASSWORD_FLOSS}
+    username: ${EMAIL_NAME_FLOSS}
+    password: ${EMAIL_PASSWORD_FLOSS}
     from: floss@prodatalab.com
     recipients: [ peter.alexander@prodatalab.com ]
-    secrets: [ GMAIL_PASSWORD_floss ]
+    secrets: [ email_name_floss, email_password_floss ]
     when:
       status: [ changed, failure ]
 #  publish:
