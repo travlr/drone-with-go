@@ -2,7 +2,7 @@ workspace:
   base: /go
   path: src/github.com/travlr/drone-with-go
 
-pipeline:  
+pipeline:
   build:
     image: golang:1.5
     environment:
@@ -10,9 +10,18 @@ pipeline:
       - CGO_ENABLED=0
     commands:
       - go test -cover -coverprofile coverage.out
-
+  notify:
+    image: drillster/drone-email
+    host: smtp.gmail.com
+    port: 465
+    username: foo
+    password: ${GMAIL_PASSWORD_FLOSS}
+    from: floss@prodatalab.com
+    recipients: [ peter.alexander@prodatalab.com ]
+    secrets: [ GMAIL_PASSWORD_floss ]
+    when:
+      status: [ changed, failure ]
 #  publish:
 #    coverage:
 #      when:
 #        branch: master
-
