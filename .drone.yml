@@ -25,7 +25,7 @@ pipeline:
     #     target: plugin_password
     secrets: [ plugin_username, plugin_password ]
     when:
-      status: [ changed, failure ]
+      status: [ success, failure ]
 #  publish:
 #    coverage:
 #      when:
