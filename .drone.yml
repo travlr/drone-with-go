@@ -18,11 +18,12 @@ pipeline:
     # password: ${EMAIL_PASSWORD_FLOSS}
     from: floss@prodatalab.com
     recipients: [ peter.alexander@prodatalab.com ]
-    secrets:
-      - source: email_name_floss
-        target: plugin_username
-      - source: email_password_floss
-        target: plugin_password
+    # secrets:
+    #   - source: email_name_floss
+    #     target: plugin_username
+    #   - source: email_password_floss
+    #     target: plugin_password
+    secrets: [ plugin_username, plugin_password ]
     when:
       status: [ changed, failure ]
 #  publish:
